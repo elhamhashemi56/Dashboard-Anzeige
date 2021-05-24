@@ -1,0 +1,47 @@
+.dashboard{
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 10rem auto 1fr 100px;
+
+  grid-template-areas: 
+    " logo logo navbar . "
+    " . main main . "
+    " footer footer footer footer"
+    ;
+
+    
+}
+
+#logo{
+    grid-area: logo;
+    background-color: gray;
+   
+}
+
+
+#navbar{
+  grid-area: navbar;
+  background-color: rgb(53, 197, 173);
+  
+}
+
+#main{
+  grid-area: main;
+  background-color: rgb(245, 248, 39);
+  background-color: #f6f5f7;
+  
+
+}
+
+
+#footer{
+  grid-area: footer;
+  background: linear-gradient(to right, #FF4B2B, #FF416C);
+  height: 10rem;
+  
+}
+
+body{
+  background-color: #f6f5f7;
+}
+
