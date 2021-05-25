@@ -15,7 +15,7 @@ function Home() {
   signInButton.addEventListener('click', () => {
 	container.classList.remove("right-panel-active");
   });
-  
+
 //******************************************* */
     const [state, setState] = useState({
         name: "",
