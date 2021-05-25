@@ -1,0 +1,13 @@
+.container-test{
+    display: flex;
+    justify-content: center;
+}
+
+.items{
+    margin: 5rem;
+    border: 1px solid red;
+}
+
+.imgBorder{
+    border: 1px solid green;
+}
