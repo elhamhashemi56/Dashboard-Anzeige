@@ -69,7 +69,7 @@ const NewProdukt = () => {
 
                 <form action="#">
                     <h3>New Product</h3>
-
+                            
                     <input
                         type="text"
                         placeholder="Product Name"
