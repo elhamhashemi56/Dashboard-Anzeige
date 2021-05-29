@@ -13,8 +13,10 @@ import Produkt from './Produkt'
 import Uberuns from './Uberuns'
 import Lernen from './Lernen'
 import Losung from './Losung'
+import Admin from './Admin'
 
 function Dashboard() {
+  
   return (
     <Router>
     <div className='dashboard'>
@@ -31,6 +33,8 @@ function Dashboard() {
               <Route path='/uberuns'><Uberuns /></Route>
               <Route path='/losung'><Losung /></Route>
               <Route path='/lernen'><Lernen /></Route>
+              <Route path='/admin'><Admin /></Route>
+
             </Switch>
           </div>
       <div id='footer'>footer</div>

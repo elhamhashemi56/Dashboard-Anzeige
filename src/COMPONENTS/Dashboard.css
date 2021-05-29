@@ -14,21 +14,21 @@
 
 #logo{
     grid-area: logo;
-    background-color: gray;
+    /* background-color: gray; */
    
 }
 
 
 #navbar{
   grid-area: navbar;
-  background-color: rgb(53, 197, 173);
+  /* background-color: rgb(53, 197, 173); */
   
 }
 
 #main{
   grid-area: main;
-  background-color: rgb(245, 248, 39);
-  background-color: #f6f5f7;
+  /* background-color: rgb(245, 248, 39); */
+  /* background-color: #f6f5f7; */
   
 
 }
