@@ -9,7 +9,7 @@ function Produkt() {
     const [productList, setProductList] = useState([]);
 
     const readData = ()=>{
-        axios.get("http://localhost:5000/product").then(res => {
+        axios.get(`${process.env.REACT_APP_BACKENDURL}/product`).then(res => {
             setProductList(res.data);
             console.log(res.data);
         }).catch(err => {
