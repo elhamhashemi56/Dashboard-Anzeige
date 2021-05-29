@@ -2,6 +2,7 @@ import './produkt.css'
 import {Button, Card} from 'react-bootstrap';
 import {useEffect, useState} from "react";
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function Produkt() {
 
@@ -21,7 +22,8 @@ function Produkt() {
     }, [])
 
     const handleDeleteProduct = (productId) => {
-        axios.delete(`http://localhost:5000/product/${productId}`).then(res => {
+        axios.delete(`${process.env.REACT_APP_BACKENDURL}/product/${productId}`).then(res => {
+           
             alert("ok")
             readData();
         }).catch(err => {
@@ -30,7 +32,9 @@ function Produkt() {
     }
 
     return (
+        <>
         <div className="container-test">
+
             {productList.map(item => <div className="items">
                 <Card style={{width: '18rem'}}>
                     <Card.Img variant="top" src={item.image} className='imgBorder'/>
@@ -45,10 +49,14 @@ function Produkt() {
                         <Button onClick={() => handleDeleteProduct(item._id)} variant="primary">delete</Button>
                     </Card.Body>
                 </Card>
+
+                
             </div>)}
             
         </div>
-
+       
+       <Link to='./admin'><button>New Product</button></Link>
+</>
     );
 }
 

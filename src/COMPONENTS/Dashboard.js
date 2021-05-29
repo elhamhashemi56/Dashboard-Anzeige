@@ -8,12 +8,12 @@ import {
 import './Dashboard.css';
 import Logo from './Logo'
 import Navbar from './Navbar'
-import Home from './Home'
 import Produkt from './Produkt'
-import Uberuns from './Uberuns'
+import Register from './Register'
 import Lernen from './Lernen'
 import Losung from './Losung'
 import Admin from './Admin'
+import Home from './Home'
 
 function Dashboard() {
   
@@ -30,10 +30,8 @@ function Dashboard() {
               <Redirect exact path='/' to='/home'></Redirect>
               <Route path='/home'><Home /></Route>
               <Route path='/produkt'><Produkt /></Route>
-              <Route path='/uberuns'><Uberuns /></Route>
-              <Route path='/losung'><Losung /></Route>
-              <Route path='/lernen'><Lernen /></Route>
               <Route path='/admin'><Admin /></Route>
+              <Route path='/register'><Register /></Route>
 
             </Switch>
           </div>
