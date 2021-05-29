@@ -10,8 +10,6 @@ import Logo from './Logo'
 import Navbar from './Navbar'
 import Produkt from './Produkt'
 import Register from './Register'
-import Lernen from './Lernen'
-import Losung from './Losung'
 import Admin from './Admin'
 import Home from './Home'
 

@@ -30,13 +30,13 @@ const NewProdukt = () => {
 
     const handleSend = (e) => {
         e.preventDefault();
-        if (state.name.length && state.price.length && state.description.length && file) {
+        if (state.name.length && state.price.length && state.description.length) {
             
             const formData = new FormData()
             formData.append("name", state.name);
             formData.append("price", state.price);
             formData.append("description", state.description);
-            formData.append("image", file);
+            // formData.append("image", file);
 
             axios
                 .post(`${process.env.REACT_APP_BACKENDURL}/product`, formData)
