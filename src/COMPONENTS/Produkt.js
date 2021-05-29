@@ -24,7 +24,7 @@ function Produkt() {
     const handleDeleteProduct = (productId) => {
         axios.delete(`${process.env.REACT_APP_BACKENDURL}/product/${productId}`).then(res => {
            
-            alert("ok")
+            alert("Are you sure?")
             readData();
         }).catch(err => {
             console.log(err);
@@ -54,8 +54,10 @@ function Produkt() {
             </div>)}
             
         </div>
+      <div className='buContainer'>
+        <Link to='./admin'><button>New Product</button></Link>
+      </div>
        
-       <Link to='./admin'><button>New Product</button></Link>
 </>
     );
 }

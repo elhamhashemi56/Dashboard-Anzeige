@@ -33,7 +33,7 @@ function Dashboard() {
 
             </Switch>
           </div>
-      <div id='footer'>footer</div>
+      <div id='footer'></div>
 
     </div>
     </Router>
