@@ -6,8 +6,8 @@ function Home() {
         <div className='home'>
             <div className="container2">
                 <div className='home-container'>
-                    <h1>Spielend Top-Talente gewinnen.</h1>
-                    <p>Durch die innovative Mischung des Recruitainments geht Colossio die Extra-Meile für jeden Kunden.</p>
+                    <h1 className='hclass'>Spielend Top-Talente gewinnen.</h1>
+                    <p className='p_class'>Durch die innovative Mischung des Recruitainments geht Colossio die Extra-Meile für jeden Kunden.</p>
                     <p className='pclass'>Colossio hat eine einzigartige Plattform entwickelt, die Recruiting und Entertainment auf innovative Art vereint - genannt “Recruitainment”.
                     Mithilfe digitaler Turnierveranstaltungen generieren unsere Kunden 10% mehr qualifizierte Bewerber.
                     Dem Fachkräftemangel entgegenwirkend eröffnen Digitale Spiele-Turniere eine neue, zeitgemäße Möglichkeit, MINT-Fachkräfte über deren Begeisterung am Gaming, anzusprechen.

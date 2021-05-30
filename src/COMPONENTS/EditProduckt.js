@@ -1,18 +1,33 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './newProdukt.css'
 import axios from 'axios'
-import {useHistory} from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
 
-const NewProdukt = () => {
+const EditProdukt = () => {
 
+    const {productId} = useParams()
     const [file, setFile] = useState()// blob
     const history = useHistory();
     const [state, setState] = useState({
+        _id: "",
         name: "",
         price: "",
         description: "",
         SuccessMessage: ""
     });
+
+    useEffect(() => {
+        axios.get(`${process.env.REACT_APP_BACKENDURL}/product/edit/${productId}`).then(res => {
+            setState(state => ({
+                _id: res.data._id,
+                name: res.data.name,
+                price: res.data.price,
+                description: res.data.price,
+            }))
+        }).catch(err => {
+            console.log(err);
+        });
+    }, [])
 
     const handleChange = (e) => {
         const {id, value} = e.target;
@@ -40,19 +55,9 @@ const NewProdukt = () => {
             formData.append("image", file);
 
             axios
-                .post(`${process.env.REACT_APP_BACKENDURL}/product`, formData)
+                .put(`${process.env.REACT_APP_BACKENDURL}/product/${state._id}`, formData)
                 .then((response) => {
-                    console.log("response", response);
-                    localStorage.setItem("product_name", response.data.name);
-                    localStorage.setItem("product_price", response.data.price);
-                    localStorage.setItem("product_description", response.data.description);
-                    localStorage.setItem("product_image", response.data.image);
-
-                    if (response.status === 201) {
-                        history.push("/produkt")
-                    } else {
-                        alert("Some error occurred");
-                    }
+                    history.push("/produkt")
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -69,7 +74,7 @@ const NewProdukt = () => {
             <div className="container" id="container">
 
                 <form action="#">
-                    <h3>New Product</h3>
+                    <h3>Edit Product</h3>
 
                     <input
                         type="text"
@@ -103,7 +108,7 @@ const NewProdukt = () => {
                         onChange={handleChangeImage}
                     />
 
-                   <button onClick={handleSend} className='buContainer'>S E N D</button>
+                    <button onClick={handleSend} className='buContainer'>S E N D</button>
                 </form>
             </div>
         </div>
@@ -112,4 +117,4 @@ const NewProdukt = () => {
     )
 }
 
-export default NewProdukt
+export default EditProdukt

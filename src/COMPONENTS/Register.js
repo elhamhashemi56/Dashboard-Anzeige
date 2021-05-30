@@ -1,21 +1,30 @@
 import React, {useRef, useState} from "react";
-import {useHistory} from "react-router-dom";     
+import {useHistory} from "react-router-dom";
 import './Register.css'
 import axios from "axios";
+import {toast} from "react-toastify";
 
 function Register() {
 
     const containerRef = useRef();
-    const history=useHistory()
+    const containerSignup = useRef();
+    const containerSignin = useRef();
+    const history = useHistory()
 
     const handleSigninClick = () => {
+        console.log("handleSigninClick")
         containerRef.current.classList.remove("right-panel-active");
+        containerSignin.current.classList.add("form-show")
+        containerSignup.current.classList.remove("form-show")
 
     }
     const handleSignupClick = () => {
+        console.log("handleSignupClick")
         containerRef.current.classList.add("right-panel-active");
-
+        containerSignin.current.classList.remove("form-show")
+        containerSignup.current.classList.add("form-show")
     }
+
 
     //******************************************* */
     const [state, setState] = useState({
@@ -56,7 +65,8 @@ function Register() {
 
 // Sign Up *************************************
 
-    const handleSubmitClick_SignUp = () => {
+    const handleSubmitClick_SignUp = (e) => {
+        e.preventDefault();
         if (state.name.length && state.email.length && state.password.length) {
             const payload = {
                 name: state.name,
@@ -70,19 +80,14 @@ function Register() {
                 .then((response) => {
                     console.log(response);
                     localStorage.setItem("user_name", response.data.name);
-
-                    if (response.status === 201) {
-                        setState((prevState) => ({
-                            ...prevState,
-                            SuccessMessage:
-                                "Registration successful.",
-                        }));
-
-                    } else {
-                        alert("Some error occurred");
-                    }
+                    toast.success("register successfully")
+                    handleSigninClick();
                 })
                 .catch(function (error) {
+                    if (error.response.data)
+                        toast.error(error.response.data)
+                    else
+                        toast.error(error.message);
                     console.log(error);
                 });
         } else {
@@ -90,41 +95,40 @@ function Register() {
         }
     };
 
-// Sign In *********************************************    
+// Sign In *********************************************
 
-const handleSubmitClick_SignIn = () => {
-    if (state.email.length && state.password.length) {
-        const payload = {
-            password: state.password,
-            email: state.email,
-        };
-        console.log('payload',payload);
+    const handleSubmitClick_SignIn = (e) => {
+        e.preventDefault();
+        if (state.email.length && state.password.length) {
+            const payload = {
+                password: state.password,
+                email: state.email,
+            };
+            console.log('payload', payload);
 
-        axios
-            .post(`${process.env.REACT_APP_BACKENDURL}/user/login`, payload)
-            .then((response) => {
-                console.log('response',response);
-                localStorage.setItem("user_token", response.data.token);
-
-                if (response.status === 200) {
-                    history.push('/produkt')
-
-                } else {
-                    alert("Some error occurred");
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    } else {
-        alert("Please enter valid name and password");
-    }
-};
+            axios
+                .post(`${process.env.REACT_APP_BACKENDURL}/user/login`, payload)
+                .then((response) => {
+                    console.log('response', response);
+                    localStorage.setItem("user_token", response.data.token);
+                    window.location.assign('/produkt')
+                })
+                .catch(function (error) {
+                    if (error.response.data)
+                        toast.error(error.response.data)
+                    else
+                        toast.error(error.message);
+                    console.log(error);
+                });
+        } else {
+            alert("Please enter valid name and password");
+        }
+    };
 //**************************************** */
     return (
         <div className='home'>
-            <div ref={containerRef} className="container" id="container">
-                <div className="form-container sign-up-container">
+            <div ref={containerRef} className="register__container" id="container">
+                <div className="register__form-container sign-up-container" ref={containerSignup}>
                     <form action="#">
                         <h1>Create Account</h1>
                         <div class="social-container">
@@ -157,9 +161,10 @@ const handleSubmitClick_SignIn = () => {
                         />
 
                         <button onClick={handleSubmitClick_SignUp}>Sign Up</button>
+                        <p className={"extra-p"}>already registerd ? <span onClick={handleSigninClick}>sign in now</span></p>
                     </form>
                 </div>
-                <div className="form-container sign-in-container">
+                <div className="register__form-container sign-in-container form-show" ref={containerSignin}>
                     <form action="#">
                         <h1>Sign in</h1>
                         <div className="social-container">
@@ -169,22 +174,23 @@ const handleSubmitClick_SignIn = () => {
                         </div>
                         <span>or use your account</span>
                         <input
-                         type="email"
-                         id='email'
-                         placeholder="Email"
-                         value={state.email}
-                         onChange={handleChange}
-                         />
+                            type="email"
+                            id='email'
+                            placeholder="Email"
+                            value={state.email}
+                            onChange={handleChange}
+                        />
 
                         <input
-                         type="password"
-                         id='password'
-                         placeholder="Password"
-                         value={state.password}
-                         onChange={handleChange}
-                         />
+                            type="password"
+                            id='password'
+                            placeholder="Password"
+                            value={state.password}
+                            onChange={handleChange}
+                        />
                         <a href="#">Forgot your password?</a>
                         <button onClick={handleSubmitClick_SignIn}>Sign In</button>
+                        <p className={"extra-p"}>dont have a account ? <span onClick={handleSignupClick}>sign up now</span></p>
                     </form>
                 </div>
                 <div className="overlay-container">

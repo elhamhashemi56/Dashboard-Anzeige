@@ -1,0 +1,17 @@
+.register {
+  display: none;
+}
+.register__container {
+  display: none;
+}
+.register__container li {
+  display: none;
+}
+.register__container li img {
+  display: none;
+}
+.register__container li:last-child {
+  margin-bottom: 1rem;
+}
+
+/*# sourceMappingURL=register1.css.map */

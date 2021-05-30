@@ -3,12 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Dashboard from './COMPONENTS/Dashboard';
 import reportWebVitals from './reportWebVitals';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Dashboard />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <Dashboard/>
+        <ToastContainer/>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
