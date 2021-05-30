@@ -45,3 +45,18 @@ body{
   background-color: #f6f5f7;
 }
 
+@media screen and (max-width: 780px) {
+	.dashboard{
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-columns: 10rem auto 1fr 100px;
+  
+    grid-template-areas: 
+      " logo logo . . "
+      ". navbar navbar ."
+      " . main main . "
+      " footer footer footer footer"
+      ;
+  }
+
+}

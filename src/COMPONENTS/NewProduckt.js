@@ -30,13 +30,13 @@ const NewProdukt = () => {
 
     const handleSend = (e) => {
         e.preventDefault();
-        if (state.name.length && state.price.length && state.description.length) {
+        if (state.name.length && state.price.length && state.description.length && file) {
             
             const formData = new FormData()
             formData.append("name", state.name);
             formData.append("price", state.price);
             formData.append("description", state.description);
-            // formData.append("image", file);
+            formData.append("image", file);
 
             axios
                 .post(`${process.env.REACT_APP_BACKENDURL}/product`, formData)
@@ -47,7 +47,7 @@ const NewProdukt = () => {
                     localStorage.setItem("product_description", response.data.description);
                     localStorage.setItem("product_image", response.data.image);
 
-                    if (response.status === 200) {
+                    if (response.status === 201) {
                         history.push("/produkt")
                     } else {
                         alert("Some error occurred");
