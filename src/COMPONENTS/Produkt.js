@@ -55,7 +55,7 @@ function Produkt() {
             
         </div>
       <div className='buContainer'>
-        <Link to='./admin'><button>New Product</button></Link>
+        <Link to='./newprodukt'><button>New Product</button></Link>
       </div>
        
 </>
