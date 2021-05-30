@@ -102,7 +102,7 @@ const NewProdukt = () => {
                         onChange={handleChangeImage}
                     />
 
-                    <button onClick={handleSend}>S E N D</button>
+                   <button onClick={handleSend} className='buContainer'>S E N D</button>
                 </form>
             </div>
         </div>

@@ -9,3 +9,12 @@
 .navbar-item{
     margin: 1rem;
 }
+
+@media screen and (max-width: 780px) {
+    .navbar{
+        display: flex;
+        margin-top: 2.8rem;
+        justify-content: flex-start;
+        
+    }
+}
