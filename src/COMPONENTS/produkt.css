@@ -1,6 +1,9 @@
 .container-test{
     display: flex;
     justify-content: center;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .items{
